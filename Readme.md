@@ -16,7 +16,7 @@ DataSet.json 을 아래 형태로 작성
   
 </pre>
 
-루트 폴더에서 아래 명령어 실행
+루트 폴더에서 터미널 실행 후 아래 명령어 실행
 <pre>
     <code>
     npm start
