@@ -16,6 +16,14 @@ DataSet.json 을 아래 형태로 작성
   
 </pre>
 
+루트 폴더에서 아래 명령어 실행
+<pre>
+    <code>
+    npm start
+    </code>
+
+</pre>
+
 ### 주의
 단순히 서버의 루트만 보낼 것이 아니라.. 단순히 http status code인 200을 반환하는 라우팅을 만들어야 함.
 
