@@ -2,34 +2,37 @@ const Discord = require('discord.js')
 const client = new Discord.Client();
 const data = require("./DataSet.json");
 var request = require('request')
-require('./DateFormat');
 
+function check() {
+    request.get({
+        url: data.URL
+      }, function(error, response, body) {
+
+        try{
+          if(error) stat = "꺼짐";
+          else if(response.statusCode == 200) {
+              stat = "정상"
+          }else {
+              stat= "오류 발생"
+          }
+        }catch(e) {
+            stat = "오류 발생"
+        }finally{
+            channel.send('ServerStatus : ' + stat + '\nURL : '+data.URL +'\n' + moment().format('MM-DD HH:mm:ss'))    
+        }
+
+        }
+      
+      )
+}
 
 
 client.on('ready', () => {
     var channel = client.channels.cache.get(data.ID);
+    var stat;
     
-    request.get({
-        url: data.URL
-      }, function(error, response, body) {
-          if(error) console.log(error);
-          else channel.send('ServerStatus : ' + response.statusCode + '\nURL : '+data.URL +'\n' + new Date().format('MM-dd HH:mm:ss'))    
-        }
-      
-      )
-
-    var interval = setInterval (function () {
-        // use the message's channel (TextChannel) to send a new message
-        request.get({
-            url: data.URL
-          }, function(error, response, body) {
-              if(error) console.log(error);
-              else channel.send('ServerStatus : ' + response.statusCode + '\nURL : '+data.URL +'\n' + new Date().format('MM-dd HH:mm:ss'))    
-            }
-          
-          )
-         // add error handling here
-    }, 1 * 30000); 
+     check();
+    var interval = setInterval (check(),  1 * 30000); 
     
     
    
