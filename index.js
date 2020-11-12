@@ -11,7 +11,6 @@ function check() {
         try{
           if(error) stat = "꺼짐";
           else if(response.statusCode == 200) {
-              console.log(response.statusMessage);
               stat = "정상"
           }else {
               stat= "오류 발생"
